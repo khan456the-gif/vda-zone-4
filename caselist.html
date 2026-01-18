@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case List</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f2f2f2;
+}
+.header{
+  background:#8b0000;
+  color:white;
+  padding:15px;
+  text-align:center;
+  position:relative;
+}
+.zone{
+  position:absolute;
+  right:15px;
+  top:15px;
+  background:white;
+  color:#8b0000;
+  padding:5px 12px;
+  border-radius:20px;
+  font-weight:bold;
+}
+.btn{
+  background:#8b0000;
+  color:white;
+  padding:14px;
+  margin:15px;
+  border-radius:10px;
+  text-align:center;
+  font-size:18px;
+  text-decoration:none;
+  display:block;
+}
+.card{
+  background:white;
+  margin:15px;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+.status-new{color:green;font-weight:bold}
+.status-notice{color:orange;font-weight:bold}
+.status-closed{color:gray;font-weight:bold}
+.view-btn{
+  background:#8b0000;
+  color:white;
+  padding:8px 16px;
+  border-radius:8px;
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="zone">ZONE – 4</div>
+  <h2>Varanasi Development Authority</h2>
+  <h3>Case List</h3>
+</div>
+
+<a class="btn" href="newcase.html">+ New Case</a>
+
+<!-- CASE 1021 -->
+<div class="card">
+  <h3>Case ID: 1021</h3>
+  Type: Illegal Construction<br>
+  Area: Shivpur<br>
+  Date: 18-01-2026<br>
+  <span id="status_1021" class="status-new">Status: New</span><br>
+  <a class="view-btn" href="casedetail.html">View</a>
+</div>
+
+<!-- CASE 1022 -->
+<div class="card">
+  <h3>Case ID: 1022</h3>
+  Type: Illegal Plotting<br>
+  Area: Dafi<br>
+  Date: 17-01-2026<br>
+  <span id="status_1022" class="status-notice">Status: Notice Issued</span><br>
+  <a class="view-btn" href="casedetail.html">View</a>
+</div>
+
+<!-- CASE 1023 -->
+<div class="card">
+  <h3>Case ID: 1023</h3>
+  Type: Illegal Construction<br>
+  Area: Sarnath<br>
+  Date: 15-01-2026<br>
+  <span id="status_1023" class="status-closed">Status: Closed</span><br>
+  <a class="view-btn" href="casedetail.html">View</a>
+</div>
+
+<script>
+// auto update status from case detail
+["1021","1022","1023"].forEach(id=>{
+  const saved = localStorage.getItem("case_"+id);
+  if(saved){
+    const el = document.getElementById("status_"+id);
+    if(el){
+      el.innerText = "Status: " + saved;
+      el.className = "";
+      if(saved==="New") el.classList.add("status-new");
+      if(saved==="Notice Issued") el.classList.add("status-notice");
+      if(saved==="Closed") el.classList.add("status-closed");
+    }
+  }
+});
+</script>
+
+</body>
+</html>
