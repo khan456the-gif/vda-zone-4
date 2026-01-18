@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VDA Login</title>
+<style>
+body{margin:0;font-family:Arial;background:#7a0000}
+.box{
+  width:280px;background:#fff;margin:120px auto;
+  padding:20px;border-radius:8px;text-align:center
+}
+input{width:100%;padding:10px;margin-top:10px}
+button{
+  width:100%;padding:12px;margin-top:15px;
+  background:#7a0000;color:#fff;border:none;border-radius:6px
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h3>VDA Login</h3>
+  <input id="u" placeholder="Username">
+  <input id="p" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login(){
+ if(p.value!=="1234"){alert("Wrong Password");return;}
+ if(u.value==="admin"||u.value==="je"||u.value==="sup"){
+  localStorage.setItem("login","yes");
+  localStorage.setItem("role",u.value);
+  location.href="dashboard.html";
+ }else alert("Invalid User");
+}
+</script>
+
+</body>
+</html>
