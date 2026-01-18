@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="viewport" content="width=device-width">
+<title>Notice</title>
+<style>
+body{font-family:Arial;background:#f2f2f2;padding:15px}
+.box{background:#fff;padding:20px;border-radius:10px}
+button{padding:12px;width:100%;margin-top:10px;background:#7a0000;color:#fff;border:none}
+</style>
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("login")!=="yes") location.href="login.html";
+</script>
+
+<div class="box">
+<h3>Generate Notice</h3>
+<textarea style="width:100%;height:180px">
+Illegal construction found. Stop immediately.
+</textarea>
+<button onclick="window.print()">Print</button>
+</div>
+
+</body>
+</html>
