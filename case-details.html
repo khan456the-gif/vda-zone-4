@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Detail</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f2f2f2}
+.header{background:#8b0000;color:#fff;padding:15px;text-align:center;position:relative}
+.zone{position:absolute;right:15px;top:15px;background:#fff;color:#8b0000;padding:5px 12px;border-radius:20px;font-weight:bold}
+.card{background:#fff;margin:15px;padding:15px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.label{font-weight:bold}
+.btn{display:block;background:#8b0000;color:#fff;padding:14px;margin:10px 15px;border-radius:10px;text-align:center;font-size:16px;text-decoration:none;border:none}
+.btn-gray{background:#555}
+.status-new{color:green;font-weight:bold}
+.status-notice{color:orange;font-weight:bold}
+.status-closed{color:gray;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="zone">ZONE – 4</div>
+  <h2>Varanasi Development Authority</h2>
+  <h3>Case Detail</h3>
+</div>
+
+<div class="card">
+  <p><span class="label">Case ID:</span> <span id="caseId">1021</span></p>
+  <p><span class="label">Type:</span> Illegal Construction</p>
+  <p><span class="label">Area:</span> Shivpur</p>
+  <p><span class="label">Date:</span> 18-01-2026</p>
+  <p><span class="label">Status:</span>
+     <span id="statusText" class="status-new">New</span>
+  </p>
+</div>
+
+<button class="btn" onclick="setStatus('Notice Issued')">📄 Issue Notice</button>
+<button class="btn" onclick="setStatus('Closed')">✅ Close Case</button>
+
+<a href="evidence.html" class="btn">📷 Evidence</a>
+<a href="caselist.html" class="btn btn-gray">⬅ Back to Case List</a>
+
+<script>
+const caseId = document.getElementById('caseId').innerText;
+const statusText = document.getElementById('statusText');
+
+// load saved status
+const savedStatus = localStorage.getItem("case_"+caseId);
+if(savedStatus){ updateUI(savedStatus); }
+
+function setStatus(status){
+  localStorage.setItem("case_"+caseId, status);
+  updateUI(status);
+  alert("Status updated to: " + status);
+}
+
+function updateUI(status){
+  statusText.innerText = status;
+  statusText.className = "";
+  if(status==="New") statusText.classList.add("status-new");
+  if(status==="Notice Issued") statusText.classList.add("status-notice");
+  if(status==="Closed") statusText.classList.add("status-closed");
+}
+</script>
+
+</body>
+</html>
